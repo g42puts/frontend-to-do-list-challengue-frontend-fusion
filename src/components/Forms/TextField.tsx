@@ -14,7 +14,7 @@ interface TextFieldProps extends ComponentPropsWithoutRef<"input"> {
   error?: boolean;
 }
 
-const TextField = forwardRef<ElementRef<"input">, TextFieldProps>(
+const TextField = forwardRef<ElementRef<"input" | "textarea">, TextFieldProps>(
   (props, ref) => {
     const {
       value = "",
@@ -33,7 +33,6 @@ const TextField = forwardRef<ElementRef<"input">, TextFieldProps>(
       React.DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
       | React.DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
       = {
-      ref: ref,
       name: name,
       value: value,
       type: type == 'password' ? 'password' : undefined,
@@ -56,7 +55,11 @@ const TextField = forwardRef<ElementRef<"input">, TextFieldProps>(
         >
           {label}
         </label>
-        {type === 'textarea' ? <textarea {...values} /> : <input {...values} />}
+        {type === 'textarea' ? (
+          <textarea ref={ref as React.Ref<HTMLTextAreaElement>} {...values as React.TextareaHTMLAttributes<HTMLTextAreaElement>} />
+        ) : (
+          <input ref={ref as React.Ref<HTMLInputElement>} type={type} {...values as React.InputHTMLAttributes<HTMLInputElement>} />
+        )}
         {helperText && (
           <div className="relative">
             <p className="absolute text-sm -mt-1">{helperText}</p>
