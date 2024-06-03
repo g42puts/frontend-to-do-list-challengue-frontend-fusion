@@ -1,7 +1,8 @@
 import { TaskService } from "@/services";
 
 const useTasks = async () => {
-  return await TaskService.findAll();
+  const data = TaskService.findAll();
+  return data;
 };
 
 export { useTasks };

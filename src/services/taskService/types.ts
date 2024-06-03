@@ -7,6 +7,9 @@ export interface ITask {
   last_update: string;
 }
 
+export interface CreateTask
+  extends Omit<ITask, "_id" | "created_at" | "last_update"> {}
+
 export type IUpdateTask = Partial<
-  Pick<ITask, "title" | "description" | "done" | "last_update">
+  Pick<ITask, "title" | "description" | "done">
 >;

@@ -1,5 +1,6 @@
-import { cn } from "@/utils";
 import { ComponentPropsWithoutRef, forwardRef, ReactNode } from "react";
+
+import { cn } from "@/utils";
 
 interface FormContainerProps extends ComponentPropsWithoutRef<"form"> {
   className?: string;
@@ -10,7 +11,7 @@ const FormContainer = forwardRef<HTMLFormElement, FormContainerProps>((props, re
   const { className, children, ...rest } = props;
 
   return (
-    <form className={cn("", className)} ref={ref} {...rest}>
+    <form className={cn("flex flex-col gap-4", className)} ref={ref} {...rest}>
       {children}
     </form>
   )

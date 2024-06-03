@@ -27,7 +27,6 @@ const AuthService = {
     const { data } = await api.post<IServerResponse<{ accessToken: string }>>(
       "/auth/refresh"
     );
-    console.log("data do service: ", data);
     return data.data;
   },
 };

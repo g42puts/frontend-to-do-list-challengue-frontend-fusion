@@ -1,9 +1,13 @@
+import { DefaultContainer } from "@/components/DefaultContainer";
 import { Layout } from "@/components/Layout";
+import { Cards } from "@/components/Tasks/components";
 
 const Home = () => {
   return (
     <Layout>
-      <p className="">Homepage do Site</p>
+      <DefaultContainer>
+        <Cards />
+      </DefaultContainer>
     </Layout>
   )
 }
